@@ -1,13 +1,21 @@
 import { useState } from "react";
 import { useParams, Link } from "react-router";
-import { Heart, ShoppingCart, Star, Truck, Shield, RefreshCw, Package, Clock } from "lucide-react";
+import {
+  Heart,
+  ShoppingCart,
+  Star,
+  Truck,
+  Shield,
+  RefreshCw,
+  Package,
+  Clock,
+} from "lucide-react";
 import { useCart } from "../context/CartContext";
 import { useProducts } from "../context/ProductsContext";
 
-
 export default function ProductDetails() {
   const { id } = useParams();
-  const { getProductById, products } = useProducts();
+  const { getProductById,  } = useProducts();
   const product = getProductById(Number(id));
   const { addToCart, wishlist, addToWishlist } = useCart();
 
@@ -28,9 +36,6 @@ export default function ProductDetails() {
   }
 
   const images = product.images || [product.image];
-  const relatedProducts = products
-    .filter((p) => p.category === product.category && p.id !== product.id)
-    .slice(0, 4);
 
   const handleAddToCart = () => {
     addToCart({
@@ -48,12 +53,21 @@ export default function ProductDetails() {
     <div className="container mx-auto px-4 py-8">
       {/* Breadcrumb */}
       <nav className="text-sm text-gray-600 mb-6">
-        <Link to="/" className="hover:text-gray-900">Home</Link> /{" "}
-        <Link to="/shop" className="hover:text-gray-900">Shop</Link> /{" "}
-        <Link to={`/shop?category=${product.category}`} className="hover:text-gray-900">
+        <Link to="/" className="hover:text-gray-900">
+          Home
+        </Link>{" "}
+        /{" "}
+        <Link to="/shop" className="hover:text-gray-900">
+          Shop
+        </Link>{" "}
+        /{" "}
+        <Link
+          to={`/shop?category=${product.category}`}
+          className="hover:text-gray-900"
+        >
           {product.category}
-        </Link> /{" "}
-        <span className="text-gray-900">{product.name}</span>
+        </Link>{" "}
+        / <span className="text-gray-900">{product.name}</span>
       </nav>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
@@ -72,7 +86,9 @@ export default function ProductDetails() {
                 key={index}
                 onClick={() => setSelectedImage(index)}
                 className={`aspect-square rounded-lg overflow-hidden border-2 ${
-                  selectedImage === index ? "border-gray-900" : "border-transparent"
+                  selectedImage === index
+                    ? "border-gray-900"
+                    : "border-transparent"
                 }`}
               >
                 <img
@@ -208,7 +224,9 @@ export default function ProductDetails() {
             >
               <Heart
                 className={`w-5 h-5 ${
-                  wishlist.includes(product.id) ? "fill-red-500 text-red-500" : ""
+                  wishlist.includes(product.id)
+                    ? "fill-red-500 text-red-500"
+                    : ""
                 }`}
               />
             </button>
@@ -248,17 +266,14 @@ export default function ProductDetails() {
               <Clock className="w-5 h-5 text-gray-600" />
               <div>
                 <p className="font-medium">Quick Delivery</p>
-                <p className="text-sm text-gray-600">Within 2-3 business days</p>
+                <p className="text-sm text-gray-600">
+                  Within 2-3 business days
+                </p>
               </div>
             </div>
           </div>
         </div>
       </div>
-
-      {/* Reviews */}
-      
-
-     
     </div>
   );
 }
