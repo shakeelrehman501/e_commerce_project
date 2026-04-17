@@ -7,6 +7,7 @@ import App from "./App";
 import Cart from "./pages/Cart";
 import Wishlist from "./pages/Wishlist";
 import Search from "./pages/Search";
+import ProductDetails from "./pages/ProductDetails";
 
 export const router = createBrowserRouter(
     createRoutesFromElements(
@@ -14,14 +15,8 @@ export const router = createBrowserRouter(
           <Route path="/" element={<Home />} />
           <Route path="shop" element={<Shop />} />
           <Route path="cart" element={<Cart />} />
+          <Route path="product/:id" element={<ProductDetails />} />
           <Route path="wishlist" element={<Wishlist />} />
           <Route path="search" element={<Search />} />
         </Route>,
      ));
-
-    // export const router = createBrowserRouter([
-    //   {path: "/", element: <App />,
-    //     children: [
-    //       { path: "/", element: <Home /> },
-    //       { path: "shop", element: <Shop />},
-    // ]}]);

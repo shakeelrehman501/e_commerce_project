@@ -1,6 +1,7 @@
 import { Heart, ShoppingCart } from "lucide-react";
 import type { Product } from "../data/products";
 import { useCart } from "../context/CartContext";
+import { Link } from "react-router";
 
 export default function ProductCard( {product}:{product:Product} ) {
 
@@ -18,7 +19,7 @@ export default function ProductCard( {product}:{product:Product} ) {
   }
 
   return (
-    <div className="group block">
+    <Link to={`/product/${product.id}`} className="group block">
       <div className="bg-white border rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
         <div className="relative aspect-square overflow-hidden bg-gray-100">
           <img
@@ -92,6 +93,6 @@ export default function ProductCard( {product}:{product:Product} ) {
           </button>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }

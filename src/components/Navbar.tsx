@@ -84,9 +84,9 @@ export default function Navbar() {
               className="md:hidden relative "
             >
               {isMenuOpen ? (
-                <X className="w-6 h-6" />
-              ) : (
                 <Menu className="w-6 h-6" />
+              ) : (
+                <X className="w-6 h-6" />
               )}
             </div>
           </div>
@@ -143,12 +143,12 @@ export default function Navbar() {
         </nav>
       )}
 
-      {isMenuOpen && (
+      {!isMenuOpen && (
         <div className="md:hidden border-t bg-white">
           <div className="container mx-auto px-4 py-4">
             <ul className="space-y-3">
               <li>
-                <Link to="/shop" onClick={() => setIsMenuOpen(false)} className="block py-2">
+                <Link to="/shop" onClick={() => setIsMenuOpen(true)} className="block py-2">
                   All Products
                 </Link>
               </li>
@@ -156,7 +156,7 @@ export default function Navbar() {
                 <li key={cat.name}>
                   <Link
                     to={`/shop?category=${cat.name}`}
-                    onClick={() => setIsMenuOpen(false)}
+                    onClick={() => setIsMenuOpen(true)}
                     className="block py-2"
                   >
                     {cat.name}
