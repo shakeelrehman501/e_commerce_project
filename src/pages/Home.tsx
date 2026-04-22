@@ -35,12 +35,13 @@ export default function Home() {
              ${currentSlide === index ? "opacity-100" : "opacity-0"}
             `}
           >
-            <div
+            <img
+            src={slide.image}
               className={`relative w-full h-full object-cover ${index === 0 ? "bg-red-950" : index === 1 ? "bg-yellow-800" : "bg-blue-900"}`}
             />
             <div className="absolute inset-0 flex items-center text-gray-700 container mx-auto">
-              <div className={`max-w-2xl text-white`}>
-                <h1 className="text-5xl font-bold mb-4">{slide.title}</h1>
+              <div className={`max-w-2xl text-white `}>
+                <h1 className="text-5xl font-bold mb-4 shadow-2xl">{slide.title}</h1>
                 <p className="text-xl mb-8">{slide.subtitle}</p>
                 <button className="inline-block bg-white text-gray-900 px-8 py-3 rounded hover:bg-gray-100 transition-colors font-medium">
                   {slide.buttonText}
@@ -55,6 +56,7 @@ export default function Home() {
           {heroSlides.map((_, index) => (
             <button
               key={index}
+              onClick={() => setCurrentSlide(index)}
               className={`w-3 h-3 flex gap-5  rounded-full
               ${currentSlide === index ? "bg-gray-200" : "bg-gray-500"}
                 `}
